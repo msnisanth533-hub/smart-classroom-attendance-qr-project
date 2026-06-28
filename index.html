@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Classroom Attendance</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="loginPage" class="container">
+
+<h1>Smart Classroom Attendance</h1>
+
+<div class="login-box">
+
+<h2>Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p id="loginMsg"></p>
+
+</div>
+
+</div>
+
+<div id="dashboard" style="display:none;">
+
+<header>
+
+<h1>Smart Classroom Attendance</h1>
+
+<button onclick="logout()">Logout</button>
+
+</header>
+
+<nav>
+
+<button onclick="showSection('qr')">Show Attendance QR</button>
+
+<button onclick="showSection('attendance')">Attendance</button>
+
+<button onclick="exportExcel()">Export Excel</button>
+
+</nav>
+
+<section id="scan">
+
+<h2>QR Code Scanner</h2>
+
+<div id="reader"></div>
+
+</section>
+<section id="qr" style="display:none; text-align:center;">
+
+<h2>Attendance QR Code</h2>
+
+<img src="qr-code (1).png" alt="Attendance QR" width="250">
+
+<p>Students: Scan this QR code to mark your attendance.</p>
+
+</section>
+
+<section id="attendance" style="display:none;">
+
+<h2>Attendance</h2>
+
+<input type="text" id="search" placeholder="Search Student" onkeyup="searchTable()">
+
+<table id="attendanceTable">
+
+<thead>
+
+<tr>
+
+<th>Roll No</th>
+
+<th>Name</th>
+
+<th>Date</th>
+
+<th>Time</th>
+
+<th>Status</th>
+
+</tr>
+  
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
