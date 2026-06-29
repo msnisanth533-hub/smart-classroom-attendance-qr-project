@@ -60,23 +60,25 @@ function addAttendance(roll) {
     loadTable();
 }
 function loadTable() {
+    fetch("https://script.google.com/macros/s/AKfycbyDwsXX2H-4Xq6zYGa9HcUEDtHGr5dAhT8xVg4gd5VVTuEZxDteGxNqjjzcQd5MbII0/exec")
+    .then(response => response.json())
+    .then(data => {
+        let tbody = document.querySelector("#attendanceTable tbody");
+        tbody.innerHTML = "";
 
-    let tbody = document.querySelector("#attendanceTable tbody");
-
-    tbody.innerHTML = "";
-
-    attendance.forEach(student => {
-
-        tbody.innerHTML += `
-        <tr>
-            <td>${student.roll}</td>
-            <td>${student.name}</td>
-            <td>${student.date}</td>
-            <td>${student.time}</td>
-            <td>${student.status}</td>
-        </tr>`;
-    });
-
+        data.slice(1).forEach(student => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${student[1]}</td>
+                    <td>${student[2]}</td>
+                    <td>${student[0]}</td>
+                    <td>${student[3]}</td>
+                    <td>Present</td>
+                </tr>
+            `;
+        });
+    })
+    .catch(error => console.error(error));
 }
 
 function searchTable() {
