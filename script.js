@@ -142,3 +142,9 @@ function openAttendanceForm() {
         "_blank"
     );
 }
+fetch("https://script.google.com/macros/s/AKfycbyDwsXX2H-4Xq6zYGa9HcUEDtHGr5dAhT8xVg4gd5VVTuEZxDteGxNqjjzcQd5MbII0/exec")
+  .then(response => response.json())
+  .then(data => {
+      console.log(data);
+  })
+  .catch(error => console.error(error));
