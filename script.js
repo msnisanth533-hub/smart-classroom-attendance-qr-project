@@ -62,7 +62,13 @@ function addAttendance(roll) {
 function loadTable() {
     fetch("https://script.google.com/macros/s/AKfycbyDwsXX2H-4Xq6zYGa9HcUEDtHGr5dAhT8xVg4gd5VVTuEZxDteGxNqjjzcQd5MbII0/exec")
     .then(response => response.json())
-    .then(data => {
+    .then(data => {attendance = data.slice(1).map(student => ({
+    roll: student[1],
+    name: student[2],
+    date: student[0],
+    time: student[3],
+    status: "Present"
+}));
         let tbody = document.querySelector("#attendanceTable tbody");
         tbody.innerHTML = "";
 
